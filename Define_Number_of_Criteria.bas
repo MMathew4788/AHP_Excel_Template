@@ -1,5 +1,5 @@
-Attribute VB_Name = "Module1"
-Sub AssignCriteriaNumber()
+Attribute VB_Name = "Define_Number_of_Criteria"
+Sub Define_Number_of_Criteria()
     Dim criteriaNumber As Variant
     Dim ws As Worksheet
     
@@ -27,6 +27,7 @@ Sub AssignCriteriaNumber()
     ' Assign the input value to cell J4
     ws.Range("J4").Value = criteriaNumber
     
-    MsgBox "The number of criteria has been set to " & criteriaNumber, vbInformation, "Success"
+    MsgBox "The number of criteria has been set to " & criteriaNumber, vbInformation, "Number of Criteria"
+    
 End Sub
 
