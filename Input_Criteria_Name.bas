@@ -20,7 +20,7 @@ Sub Input_Criteria_Name()
     
     ' Validate the number of criteria
     If NumberOfCriteria < 3 Or NumberOfCriteria > 5 Then
-        MsgBox "Please enter a valid number of criteria (3 to 5) in cell J4.", vbExclamation
+        MsgBox "Please Select Number of Criteria First", vbExclamation
         Exit Sub
     End If
     
@@ -33,10 +33,21 @@ Sub Input_Criteria_Name()
         Exit Sub
     End If
     
-    ' Prompt user for criteria names
+ ' Prompt user for criteria names with validation
     For i = 1 To NumberOfCriteria
-        criteriaSheet.Cells(1, i + 1).Value = InputBox("Enter the Name of Criteria " & i, "Add Criteria Name")
-    Next i
+    Dim criteriaName As String
+    Do
+        criteriaName = InputBox("Enter the Name of Criteria " & i, "Add Criteria Name")
+        If criteriaName = "" Then
+            MsgBox "You must enter a value for the criteria. Please try again.", vbExclamation, "Invalid Input"
+        End If
+    Loop While criteriaName = ""
+    
+    ' Store the criteria name in the worksheet
+    criteriaSheet.Cells(1, i + 1).Value = criteriaName
+    criteriaSheet.Cells(i + 1, 1).Value = criteriaName
+Next i
+
     
     MsgBox "Criteria names have been updated successfully!", vbInformation
 
